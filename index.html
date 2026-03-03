@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Путешествие мечты</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+header {
+    background: linear-gradient(to right, #0077b6, #00b4d8);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+#home { background: #caf0f8; }
+#destination { background: #f1f1f1; }
+#gallery { background: #e0f7fa; }
+#booking { background: #dbeafe; }
+#contact { background: #f1f1f1; }
+
+img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.card {
+    display: inline-block;
+    width: 260px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.selected {
+    border: 3px solid #0077b6;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #023e8a;
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+}
+
+#result, #budgetResult {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #023e8a;
+}
+
+footer {
+    background: #023e8a;
+    color: white;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 Путешествие мечты</h1>
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#destination">Направление</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#booking">Бронирование</a>
+        <a href="#contact">Контакты</a>
+    </nav>
+</header>
+
+<section id="home">
+    <h2>Добро пожаловать!</h2>
+    <p>Это сайт о моём путешествии мечты.</p>
+</section>
+
+<section id="destination">
+    <h2>🏝️ Моё направление</h2>
+    <p>I LOVE EPSTEIN</p>
+</section>
+<!-- DANIL KOLBASENKO -->
+<section id="gallery">
+    <h2>📸 Галерея</h2>
+    <img src="https://orbitshub.com/wp-content/uploads/2024/09/how-the-n757af-became-a-part-of-trumps-brand.jpg">
+    <img src="https://www.kikijourney.com/wp-content/uploads/2021/08/Halal-Friendly-Hotels-Langkawi.jpeg">
+    <img src="https://tse2.mm.bing.net/th/id/OIP.yREyem6-2-bPMNq2KPLuZwHaD4?rs=1&pid=ImgDetMain&o=7&rm=3">
+</section>
+
+<section id="booking">
+
+<h2>🏨 Выбери отель</h2>
+
+<div class="card" onclick="selectHotel(250, this)">
+    <img src="https://pix10.agoda.net/hotelImages/529494/-1/ce5f8985c7ee8a9f0ae7506ecd8712fc.jpg">
+    <h3>budget hotel</h3>
+    <p>250$</p>
+</div>
+
+<div class="card" onclick="selectHotel(500, this)">
+    <img src="https://partiurolecwb.com.br/wp-content/uploads/2022/11/3-melhores-hoteis-de-luxo-3.jpg">
+    <h3>normal hotel</h3>
+    <p>500$</p>
+</div>
+
+<div class="card" onclick="selectHotel(1000, this)">
+    <img src="https://th.bing.com/th/id/R.25c34bd8a2c120a2f55a092d92b45e5c?rik=kySpOoRBkUqhRg&pid=ImgRaw&r=0">
+    <h3>vip hotel</h3>
+    <p>1000$</p>
+</div>
+
+<h2>✈️ Выбери транспорт</h2>
+
+<div class="card" onclick="selectTransport(100, this)">
+    <img src="https://www.superyachtfan.com/wp-content/uploads/2025/06/BREAKTHROUGH-Yacht-Feadship-2025-Owner-Patrick-Dovigi-4-1-1500x845.jpg">
+    <h3>super jaht</h3>
+    <p>100$</p>
+</div>
+
+<div class="card" onclick="selectTransport(300, this)">
+    <img src="https://www.hindustantimes.com/ht-img/img/2026/01/05/550x309/USA-VENEZUELA-MADURO-NEW-YORK-136_1767625390385_1767625405887.JPG">
+    <h3>maduro helicopter</h3>
+    <p>300$</p>
+</div>
+
+<div class="card" onclick="selectTransport(500, this)">
+    <img src="https://orbitshub.com/wp-content/uploads/2024/09/how-the-n757af-became-a-part-of-trumps-brand.jpg">
+    <h3>Trump plane</h3>
+    <p>500$</p>
+</div>
+
+<div id="result">
+Общая сумма: 0$
+</div>
+
+<hr style="margin:40px">
+
+<h2>💰 Дополнительный калькулятор бюджета</h2>
+
+<input type="number" id="food" placeholder="Еда">
+<input type="number" id="excursions" placeholder="Экскурсии">
+<input type="number" id="shopping" placeholder="Шопинг">
+
+<br>
+<button onclick="calculateBudget()">Посчитать общий бюджет</button>
+
+<div id="budgetResult">
+Итоговый бюджет: 0$
+</div>
+
+</section>
+
+<section id="contact">
+    <h2>📞 Контакты</h2>
+    <p>Email: JeffreyEpstein@mail.com</p>
+    <p>Телефон: +67 171 699 84 67</p>
+</section>
+
+<footer>
+© 2026 Путешествие мечты
+</footer>
+
+<script>
+let hotelPrice = 0;
+let transportPrice = 0;
+
+function selectHotel(price, element) {
+    hotelPrice = price;
+    clearSelection("hotel");
+    element.classList.add("selected");
+    element.setAttribute("data-type", "hotel");
+    updateTotal();
+}
+
+function selectTransport(price, element) {
+    transportPrice = price;
+    clearSelection("transport");
+    element.classList.add("selected");
+    element.setAttribute("data-type", "transport");
+    updateTotal();
+}
+
+function clearSelection(type) {
+    document.querySelectorAll(".card").forEach(card => {
+        if (card.getAttribute("data-type") === type) {
+            card.classList.remove("selected");
+        }
+    });
+}
+
+function updateTotal() {
+    let total = hotelPrice + transportPrice;
+    document.getElementById("result").innerText =
+        "Общая сумма: " + total + "$";
+}
+
+function calculateBudget() {
+    let food = parseFloat(document.getElementById("food").value) || 0;
+    let excursions = parseFloat(document.getElementById("excursions").value) || 0;
+    let shopping = parseFloat(document.getElementById("shopping").value) || 0;
+
+    let total = hotelPrice + transportPrice + food + excursions + shopping;
+
+    document.getElementById("budgetResult").innerText =
+        "Итоговый бюджет: " + total + "$";
+}
+</script>
+
+</body>
+</html>
+
